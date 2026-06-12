@@ -21,7 +21,7 @@
       </a>
       <div style="display:flex;gap:18px;flex-wrap:wrap;font-family:'Spline Sans Mono',monospace;font-size:12.5px;">
         <a href="photography.html" style="color:#b14a1e;border-bottom:2px solid #b14a1e;padding-bottom:2px;">Photography</a>
-        <a class="nav-link" href="now.html" style="color:#2a2521;">Now</a>
+        <a class="nav-link" href="now.html">Now</a>
       </div>
     </nav>
 
@@ -132,12 +132,12 @@
 
 <!-- lightbox (hidden until a frame is clicked) -->
 <div id="lightbox" style="position:fixed;inset:0;z-index:9999;background:rgba(16,13,10,.975);align-items:center;justify-content:center;padding:40px 64px;">
-  <button id="lbPrev" class="lb-arrow" aria-label="previous" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:#f4e8cf;font-family:'Gluten',cursive;font-weight:800;font-size:58px;line-height:1;cursor:pointer;padding:10px 14px;">‹</button>
+  <button id="lbPrev" class="lb-arrow" aria-label="previous" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);background:none;border:none;font-family:'Gluten',cursive;font-weight:800;font-size:58px;line-height:1;cursor:pointer;padding:10px 14px;">‹</button>
   <div id="lbStage" style="display:flex;flex-direction:column;gap:14px;align-items:center;max-width:min(96vw,1500px);">
     <img id="lbImg" src="" alt="" style="max-width:100%;max-height:92vh;object-fit:contain;box-shadow:0 30px 80px -20px rgba(0,0,0,.85);filter:sepia(.1) contrast(1.03) saturate(1.05);">
   </div>
-  <button id="lbNext" class="lb-arrow" aria-label="next" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:#f4e8cf;font-family:'Gluten',cursive;font-weight:800;font-size:58px;line-height:1;cursor:pointer;padding:10px 14px;">›</button>
-  <button id="lbClose" class="lb-close" aria-label="close" style="position:absolute;top:18px;right:22px;background:none;border:2px solid #f4e8cf;border-radius:50%;width:44px;height:44px;color:#f4e8cf;font-family:'Spline Sans Mono',monospace;font-size:16px;cursor:pointer;">✕</button>
+  <button id="lbNext" class="lb-arrow" aria-label="next" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;font-family:'Gluten',cursive;font-weight:800;font-size:58px;line-height:1;cursor:pointer;padding:10px 14px;">›</button>
+  <button id="lbClose" class="lb-close" aria-label="close" style="position:absolute;top:18px;right:22px;background:none;border-radius:50%;width:44px;height:44px;font-family:'Spline Sans Mono',monospace;font-size:16px;cursor:pointer;">✕</button>
 </div>
 
 <script src="assets/js/photography.js"></script>

@@ -36,14 +36,17 @@ a { color: inherit; text-decoration: none; }
 .link-rust-brown { color: #b14a1e; }
 .link-rust-brown:hover { color: #7c5530; }
 
-/* Nav bar links (Now / Photography) — ink→rust */
+/* Nav bar links (Now / Photography) — ink→rust.
+   Base color lives here, not inline, so the :hover rule isn't outranked. */
+.nav-link { color: #2a2521; }
 .nav-link:hover { color: #b14a1e; }
 
 /* Nav brand: subtle fade */
 .brand:hover { opacity: .7; }
 
-/* Contents rows */
-.contents-row:hover { background: #fbf2dc; padding-left: 16px; }
+/* Contents rows. padding-left needs !important to beat the inline padding
+   shorthand; background has no inline collision. */
+.contents-row:hover { background: #fbf2dc; padding-left: 16px !important; }
 .contents-row .navarrow .shaft,
 .contents-row .navarrow .head { stroke-dasharray: 100; stroke-dashoffset: 0; }
 .contents-row:hover .navarrow .shaft { animation: squigShaft .5s cubic-bezier(.5, 0, .3, 1) both; }
@@ -66,8 +69,11 @@ a { color: inherit; text-decoration: none; }
 /* Contact-sheet frame image zoom on hover */
 .sheet-frame:hover img { transform: scale(1.06); }
 
-/* Lightbox controls — amber on hover */
+/* Lightbox controls — amber on hover. Base color/border live here so the
+   :hover rules aren't outranked by inline styles. */
+.lb-arrow { color: #f4e8cf; }
 .lb-arrow:hover { color: #e8a23a; }
+.lb-close { color: #f4e8cf; border: 2px solid #f4e8cf; }
 .lb-close:hover { color: #e8a23a; border-color: #e8a23a; }
 
 /* ---------- Keyframes ---------- */
