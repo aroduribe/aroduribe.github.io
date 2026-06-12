@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&amp;family=Gluten:wght@100..900&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&amp;family=Spline+Sans+Mono:wght@400..600&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes popIn { from { opacity: 0; transform: translateY(14px) rotate(-3deg); } to { opacity: 1; transform: translateY(0) rotate(0); } }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+  @keyframes tapePeel { 0% { transform: rotate(2deg) translateY(-16px) rotateX(75deg); opacity: 0; } 55% { transform: rotate(0deg) translateY(2px) rotateX(-12deg); opacity: 1; } 78% { transform: rotate(4deg) translateY(-1px) rotateX(6deg); opacity: 1; } 100% { transform: rotate(2deg) translateY(0) rotateX(0); opacity: 1; } }
+  #coverTape[data-peel="go"] { animation: tapePeel 1.1s cubic-bezier(.34,1.3,.5,1) both; }
+  @keyframes squigShaft { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+  .navarrow .shaft, .navarrow .head { stroke-dasharray: 100; stroke-dashoffset: 0; }
+  a:hover .navarrow .shaft { animation: squigShaft .5s cubic-bezier(.5,0,.3,1) both; }
+  a:hover .navarrow .head { animation: squigShaft .28s ease .34s both; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#f4e8cf;background-image:repeating-linear-gradient(45deg,rgba(124,85,48,.035) 0 1px,transparent 1px 5px),repeating-linear-gradient(-45deg,rgba(124,85,48,.035) 0 1px,transparent 1px 5px);font-family:'Newsreader',Georgia,serif;color:#2a2521;">
+  {{ overlayEl }}
+
+  <div style="max-width:1080px;margin:0 auto;padding:0 28px 80px;">
+
+    <!-- ===== MASTHEAD ===== -->
+    <header style="border-bottom:3px solid #2a2521;padding:30px 0 18px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;font-family:'Spline Sans Mono',monospace;font-size:11.5px;letter-spacing:.18em;color:#b14a1e;">
+        <span>VOL.1 · A PERSONAL ZINE</span>
+        <span>ISSUE: SUMMER 2026</span>
+      </div>
+      <div style="margin-top:26px;">
+        <h1 style="font-family:'Gluten',cursive;font-weight:800;font-size:clamp(46px,9vw,104px);line-height:.86;letter-spacing:-.02em;margin:0;color:#2a2521;">Alex Rodriguez</h1>
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(17px,2.4vw,24px);line-height:1.3;color:#5e564b;margin:14px 0 0;">engineer by day, lots of other things otherwise.</p>
+      </div>
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:18px;font-family:'Spline Sans Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:#7c5530;">
+        <span>PRINTED AT HOME</span><span>HANDLE WITH CARE</span>
+      </div>
+    </header>
+
+    <!-- ===== CONTENTS / NAV ===== -->
+    <section style="border-bottom:2px solid #2a2521;padding:8px 0 4px;">
+      <div style="font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.16em;color:#b14a1e;padding:12px 0 6px;">CONTENTS — POKE AROUND</div>
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+        <a href="{{ n.href }}" style="display:flex;align-items:center;gap:12px;padding:15px 6px;border-top:1px solid #d8c39a;cursor:pointer;" style-hover="background:#fbf2dc;padding-left:16px;">
+          <span style="font-family:'Spline Sans Mono',monospace;font-size:13px;color:#7c5530;width:34px;">{{ n.no }}</span>
+          <span style="font-family:'Gluten',cursive;font-weight:700;font-size:clamp(24px,4vw,38px);line-height:1;color:#2a2521;">{{ n.label }}</span>
+          <span style="flex:1;"></span>
+          <span style="font-family:'Newsreader',serif;font-style:italic;font-size:15px;color:#6e6459;text-align:right;">{{ n.sub }}</span>
+          <svg class="navarrow" width="46" height="24" viewBox="0 0 46 24" style="overflow:visible;flex:none;">
+            <path class="shaft" pathLength="100" d="M2,15 C7,7 12,6 15,12 C17,16 12,17 12,13 C12,7 24,9 34,12" fill="none" stroke="#b14a1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path class="head" pathLength="100" d="M40,12 l-7,-5 m7,5 l-7,5" fill="none" stroke="#b14a1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </sc-for>
+    </section>
+
+    <!-- ===== ED NOTE + FEATURE PHOTO ===== -->
+    <section style="display:grid;grid-template-columns:1.4fr 1fr;gap:34px;padding:34px 0;border-bottom:2px solid #2a2521;">
+      <div>
+        
+        <p style="font-family:'Newsreader',serif;font-size:clamp(18px,2.4vw,22px);line-height:1.7;color:#2a2521;margin:12px 0 0;">I&rsquo;ve shipped product experiences at <span style="white-space:nowrap;"><span style="display: inline-flex; align-items: flex-start; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: #146EF5; color: #fff; font-family: 'Gluten',cursive; font-weight: 800; font-size: 13px; vertical-align: middle; box-shadow: 0 1px 2px rgba(0,0,0,.25); margin-right: 6px; transform: translateY(-1px)">W</span><strong style="font-weight:600;">Webflow</strong></span> and <span style="white-space:nowrap;"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:#0a1f4d;vertical-align:middle;box-shadow:0 1px 2px rgba(0,0,0,.25);margin-right:6px;transform:translateY(-1px);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M16.5 3.2a9.4 9.4 0 1 0 5.6 15.6A7.8 7.8 0 0 1 16.5 3.2z" fill="#eaf0ff"></path></svg></span><strong style="font-weight:600;">DreamWorks</strong></span>. Outside of that, I shoot on film to stay curious about the world. I&rsquo;m a devoted cinephile, the kind who keeps a running list of artsie films and gets genuinely moved by music and shots. And I cook the way Nora Ephron writes it&hellip; food that is comforting, chaotic, and something worth caring about.</p>
+        
+      </div>
+      <div style="position:relative;align-self:start;">
+        <div style="position:relative;transform:rotate(.8deg);">
+          <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#7c5530;box-shadow:0 16px 32px -18px rgba(0,0,0,.6);">
+            <img src="assets/photos/portrait.png" alt="Alex Rodriguez" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:saturate(1.03) contrast(1.02);">
+            <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(177,74,30,.06),rgba(207,154,44,.05));mix-blend-mode:multiply;"></div>
+          </div>
+          <div style="position:absolute;bottom:-15px;left:34%;width:128px;height:32px;transform:rotate(-3deg);background:rgba(207,154,44,.6);clip-path:polygon(2% 22%,16% 6%,32% 24%,50% 8%,66% 26%,82% 10%,98% 24%,96% 76%,80% 94%,62% 74%,46% 94%,30% 76%,14% 92%,3% 74%);box-shadow:0 2px 5px rgba(0,0,0,.16);"></div>
+          <div id="coverTape" style="position:absolute;top:-15px;left:16%;width:128px;height:32px;transform:rotate(2deg);transform-origin:50% 0;background:rgba(207,154,44,.6);clip-path:polygon(2% 18%,12% 4%,28% 22%,44% 6%,60% 24%,78% 8%,96% 26%,98% 78%,82% 94%,64% 76%,46% 96%,30% 78%,14% 96%,2% 80%);box-shadow:0 2px 5px rgba(0,0,0,.16);opacity:0;" style-hover="transform:rotate(5deg) translateY(-2px);"></div>
+      </div>
+    </section>
+
+    <!-- ===== ON FILM (photography teaser) ===== -->
+    <section style="padding:30px 0;border-bottom:2px solid #2a2521;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
+        <div style="font-family:'Gluten',cursive;font-weight:800;font-size:clamp(28px,4vw,40px);color:#2a2521;">On Film</div>
+        <a href="Photography.dc.html" style="font-family:'Spline Sans Mono',monospace;font-size:12px;color:#b14a1e;letter-spacing:.06em;" style-hover="color:#7c5530;">see the whole roll →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px;">
+        <sc-for list="{{ photos5 }}" as="photo" hint-placeholder-count="5">
+          <a href="Photography.dc.html" style="position:relative;background:#211d18;padding:7px 5px;display:block;cursor:pointer;transition:transform .15s ease;" style-hover="transform:translateY(-4px) rotate(-1deg);">
+            <div style="height:5px;background:repeating-linear-gradient(to right,#cdbf9f 0 4px,transparent 4px 9px);opacity:.7;margin-bottom:5px;"></div>
+            <div style="position:relative;aspect-ratio:3/2;background:repeating-linear-gradient(135deg,#7c5530 0 8px,#6c4626 8px 16px);overflow:hidden;">
+              <img src="{{ photo.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(.14) contrast(1.04) saturate(1.05);">
+              <div style="position:absolute;bottom:3px;right:4px;font-family:'Spline Sans Mono',monospace;font-size:8px;color:#e9b84a;z-index:1;">{{ photo.n }}</div>
+            </div>
+            <div style="height:5px;background:repeating-linear-gradient(to right,#cdbf9f 0 4px,transparent 4px 9px);opacity:.7;margin-top:5px;"></div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- ===== NOW + WORK (two columns) ===== -->
+    <section style="display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:30px 0;">
+      <!-- now -->
+      <div>
+        <a href="Now.dc.html" style="display:block;border:2px solid #2a2521;background:#fffaf0;cursor:pointer;" style-hover="box-shadow:5px 5px 0 #2a2521;">
+          <div style="background:#2a2521;color:#f4e8cf;font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.14em;padding:8px 14px;display:flex;justify-content:space-between;">
+            <span style="white-space:nowrap;">NOW PLAYING</span><span>→</span>
+          </div>
+          <div style="padding:6px 14px 12px;">
+            <sc-for list="{{ nowItems }}" as="item" hint-placeholder-count="4">
+              <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px solid #ece0c4;">
+                <span style="font-family:'Spline Sans Mono',monospace;font-size:10px;text-transform:uppercase;color:#b14a1e;white-space:nowrap;">{{ item.k }}</span>
+                <span style="font-family:'Gluten',cursive;font-weight:600;font-size:16px;color:#2a2521;text-align:right;line-height:1.2;">{{ item.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </a>
+      </div>
+      <!-- the day job -->
+      <div style="display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-family:'Gluten',cursive;font-weight:800;font-size:clamp(26px,3.5vw,36px);color:#2a2521;">The day job</div>
+        <p style="font-family:'Newsreader',serif;font-size:16.5px;line-height:1.6;color:#332e28;margin:12px 0 18px;max-width:380px;">I build software for a living and like it more than that sentence suggests. The titles, the timeline, the tidy bullet points — I keep all of that where résumés go.</p>
+        <a href="https://www.linkedin.com/in/aroduribe/" target="_blank" style="display:inline-flex;align-self:flex-start;align-items:center;gap:10px;border:2px solid #2a2521;background:#2a2521;color:#f4e8cf;font-family:'Spline Sans Mono',monospace;font-size:13px;letter-spacing:.03em;padding:12px 18px;cursor:pointer;" style-hover="box-shadow:5px 5px 0 #b14a1e;">↗ the day job, on LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER / COLOPHON ===== -->
+    <footer style="border-top:3px solid #2a2521;margin-top:14px;padding:22px 0 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;">
+      <div style="display:flex;gap:22px;flex-wrap:wrap;font-family:'Spline Sans Mono',monospace;font-size:12.5px;">
+        <a href="https://letterboxd.com/aroduribe/" target="_blank" style="color:#b14a1e;" style-hover="color:#2a2521;">↗ letterboxd</a>
+        <a href="https://github.com/aroduribe" target="_blank" style="color:#b14a1e;" style-hover="color:#2a2521;">↗ github</a>
+        <a href="https://www.linkedin.com/in/aroduribe/" target="_blank" style="color:#b14a1e;" style-hover="color:#2a2521;">↗ linkedin</a>
+        <a href="mailto:uribe.rodriguez@gmail.com" style="color:#b14a1e;" style-hover="color:#2a2521;">✉ say hello</a>
+      </div>
+      
+    </footer>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    loading: (() => { try { return !sessionStorage.getItem("alex_zine_loaded"); } catch (e) { return true; } })(),
+    fading: false,
+  };
+
+  componentDidMount() {
+    if (this.state.loading) {
+      this._t1 = setTimeout(() => this.setState({ fading: true }), 2200);
+      this._t2 = setTimeout(() => {
+        try { sessionStorage.setItem("alex_zine_loaded", "1"); } catch (e) {}
+        this.setState({ loading: false });
+      }, 2780);
+    }
+    const tapeDelay = this.state.loading ? 3050 : 350;
+    this._tape = setTimeout(() => {
+      const el = document.getElementById("coverTape");
+      if (!el || el.dataset.peel === "go") return;
+      el.setAttribute("data-peel", "go");
+    }, tapeDelay);
+  }
+  componentWillUnmount() { clearTimeout(this._t1); clearTimeout(this._t2); clearTimeout(this._tape); }
+
+  renderVals() {
+    const nav = [
+      { no: "p.04", label: "Photography", sub: "film, mostly", href: "Photography.dc.html" },
+      { no: "p.08", label: "Now", sub: "watching · reading", href: "Now.dc.html" },
+    ];
+    const nowItems = [
+      { k: "Watching", v: "Widow's Bay" },
+      { k: "Reading", v: "The House of Mirth" },
+      { k: "Reading", v: "The Wonderful World That Almost Was" },
+      { k: "Reading", v: "The Land and Its People" },
+    ];
+    const timeline = [
+      { year: "2024", role: "Senior Software Engineer", place: "a startup" },
+      { year: "2021", role: "Software Engineer", place: "a product co." },
+      { year: "2019", role: "Junior Engineer", place: "first real job" },
+      { year: "2017", role: "B.S. Computer Science", place: "State U." },
+    ];
+    const photos5 = [
+      { n: "01A", img: "assets/photos/volcano-lake.jpg" },
+      { n: "04", img: "https://picsum.photos/seed/lx-f2/600/400" },
+      { n: "07", img: "https://picsum.photos/seed/lx-f3/600/400" },
+      { n: "11", img: "assets/photos/taos-pueblo.jpg" },
+      { n: "14A", img: "https://picsum.photos/seed/lx-f5/600/400" },
+    ];
+
+    let overlayEl = null;
+    if (this.state.loading) {
+      overlayEl = React.createElement("div", {
+        style: {
+          position: "fixed", inset: 0, zIndex: 9999, background: "#f4e8cf",
+          backgroundImage: "repeating-linear-gradient(45deg,rgba(124,85,48,.035) 0 1px,transparent 1px 5px),repeating-linear-gradient(-45deg,rgba(124,85,48,.035) 0 1px,transparent 1px 5px)",
+          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "10px",
+          transition: "opacity .55s ease", opacity: this.state.fading ? 0 : 1,
+        },
+      },
+        React.createElement("div", {
+          style: { fontFamily: "'Spline Sans Mono',monospace", fontSize: "12px", letterSpacing: ".22em", color: "#b14a1e", animation: "blink 1s steps(1) infinite" },
+        }, "DEVELOPING…"),
+        React.createElement("svg", { width: 360, height: 90, viewBox: "0 0 360 90", style: { display: "block" } },
+          React.createElement("path", {
+            d: "M8,46 C 48,10 78,80 124,42 S 214,6 258,46 S 332,78 352,30",
+            fill: "none", stroke: "#b14a1e", strokeWidth: 5, strokeLinecap: "round",
+            strokeDasharray: 760, strokeDashoffset: 760,
+            style: { animation: "draw 1.7s ease-in-out forwards" },
+          }),
+        ),
+        React.createElement("div", {
+          style: { fontFamily: "'Gluten',cursive", fontWeight: 800, fontSize: "clamp(42px,11vw,80px)", lineHeight: .95, textAlign: "center", color: "#2a2521", opacity: 0, animation: "popIn .55s ease 1.15s both" },
+        }, "Alex Rodriguez"),
+        React.createElement("div", {
+          style: { fontFamily: "'Caveat',cursive", fontSize: "22px", color: "#7c5530", opacity: 0, animation: "popIn .5s ease 1.6s both" },
+        }, "engineer by day, lots of other things otherwise"),
+      );
+    }
+
+    return { nav, nowItems, timeline, photos5, overlayEl };
+  }
+}
+</script>
+</body>
+</html>

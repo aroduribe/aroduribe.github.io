@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gluten:wght@100..900&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Spline+Sans+Mono:wght@400..600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#f4e8cf;background-image:repeating-linear-gradient(45deg,rgba(124,85,48,.035) 0 1px,transparent 1px 5px),repeating-linear-gradient(-45deg,rgba(124,85,48,.035) 0 1px,transparent 1px 5px);font-family:'Newsreader',Georgia,serif;color:#2a2521;">
+  <div style="max-width:1080px;margin:0 auto;padding:0 28px 80px;">
+
+    <!-- nav bar -->
+    <nav style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:3px solid #2a2521;padding:20px 0 14px;">
+      <a href="Home.dc.html" style="display:flex;align-items:baseline;gap:8px;" style-hover="opacity:.7;">
+        <span style="font-family:'Gluten',cursive;font-weight:800;font-size:25px;color:#2a2521;">Alex Rodriguez</span>
+      </a>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;font-family:'Spline Sans Mono',monospace;font-size:12.5px;">
+        <a href="Photography.dc.html" style="color:#2a2521;" style-hover="color:#b14a1e;">Photography</a>
+        <a href="Now.dc.html" style="color:#b14a1e;border-bottom:2px solid #b14a1e;padding-bottom:2px;">Now</a>
+      </div>
+    </nav>
+
+    <!-- section masthead -->
+    <header style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;padding:28px 0 16px;border-bottom:2px solid #2a2521;">
+      <div>
+        <div style="font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.18em;color:#b14a1e;">SECTION 12 · WATCHING · READING</div>
+        <h1 style="font-family:'Gluten',cursive;font-weight:800;font-size:clamp(48px,9vw,96px);line-height:.85;margin:8px 0 0;color:#2a2521;">Now</h1>
+      </div>
+      <p style="font-family:'Newsreader',serif;font-style:italic;font-size:17px;color:#5e564b;max-width:280px;text-align:right;margin:0 0 8px;">a snapshot of what's filling my evenings. updated whenever the mood strikes.</p>
+    </header>
+
+    <!-- WATCHING -->
+    <section style="margin-top:34px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:2px solid #2a2521;padding-bottom:8px;">
+        <div style="font-family:'Gluten',cursive;font-weight:800;font-size:clamp(26px,4vw,38px);color:#2a2521;">The Film Diary</div>
+        <a href="https://letterboxd.com/aroduribe/" target="_blank" style="font-family:'Spline Sans Mono',monospace;font-size:12px;color:#b14a1e;" style-hover="color:#7c5530;">↗ follow on letterboxd</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px;">
+        <sc-for list="{{ films }}" as="film" hint-placeholder-count="4">
+          <div style="display:flex;gap:14px;">
+            <div style="position:relative;flex:0 0 70px;height:104px;background:repeating-linear-gradient(135deg,#7c5530 0 9px,#6c4626 9px 18px);border:2px solid #2a2521;display:flex;align-items:flex-end;padding:5px;">
+              <span style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 3px;">poster</span>
+            </div>
+            <div style="flex:1;">
+              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">{{ film.title }} <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">{{ film.year }}</span></div>
+              <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">{{ film.stars }}</div>
+              <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- READING -->
+    <section style="margin-top:42px;">
+      <div style="border-bottom:2px solid #2a2521;padding-bottom:8px;">
+        <div style="font-family:'Gluten',cursive;font-weight:800;font-size:clamp(26px,4vw,38px);color:#2a2521;">The Shelf</div>
+      </div>
+      <div style="margin-top:18px;">
+        <!-- current read -->
+        <div style="display:flex;gap:18px;border:2px solid #2a2521;background:#fffaf0;padding:16px;box-shadow:5px 5px 0 #e7d9b7;max-width:540px;">
+          <div style="position:relative;flex:0 0 92px;height:138px;background:repeating-linear-gradient(135deg,#6e6a39 0 10px,#5c5930 10px 20px);border:2px solid #2a2521;display:flex;align-items:flex-end;padding:6px;">
+            <span style="font-family:'Spline Sans Mono',monospace;font-size:8px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 4px;">cover</span>
+          </div>
+          <div>
+            <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.14em;color:#b14a1e;">CURRENTLY READING</div>
+            <div style="font-family:'Gluten',cursive;font-weight:700;font-size:22px;line-height:1.1;color:#2a2521;margin-top:4px;">The House of Mirth</div>
+            <div style="font-family:'Newsreader',serif;font-style:italic;font-size:14px;color:#6e6459;">Edith Wharton</div>
+            <p style="font-family:'Newsreader',serif;font-size:14.5px;line-height:1.5;color:#403a33;margin:8px 0 0;">Also in the stack right now: <em>The Wonderful World That Almost Was</em> by Andrew Durbin and <em>The Land and Its People</em> by David Sedaris.</p>
+          </div>
+        </div>
+        <!-- recently finished, leaning covers -->
+        <div style="margin-top:30px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
+            <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.14em;color:#7c5530;">RECENTLY FINISHED</div>
+            <div style="font-family:'Caveat',cursive;font-size:20px;color:#7c5530;">…and a growing stack of half-finished ones.</div>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:0;padding:28px 10px 0 24px;">
+            <sc-for list="{{ books }}" as="b" hint-placeholder-count="5">
+              <div style="position:relative;flex:0 0 auto;width:122px;aspect-ratio:2/3;border-radius:2px 5px 5px 2px;box-shadow:0 12px 24px -10px rgba(0,0,0,.55);overflow:hidden;background:{{ b.color }};transform:rotate({{ b.tilt }});margin-left:-14px;transition:transform .2s ease;" style-hover="transform:rotate(0deg) translateY(-7px);">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:6px;background:rgba(0,0,0,.22);"></div>
+                <div style="position:absolute;inset:0;padding:13px 12px 11px 15px;display:flex;flex-direction:column;">
+                  <div style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;letter-spacing:.14em;opacity:.7;color:{{ b.ink }};">{{ b.tag }}</div>
+                  <div style="width:22px;height:2px;background:{{ b.ink }};opacity:.5;margin:6px 0 9px;"></div>
+                  <div style="font-family:'Gluten',cursive;font-weight:700;font-size:16px;line-height:1.02;color:{{ b.ink }};">{{ b.title }}</div>
+                  <div style="margin-top:auto;font-family:'Newsreader',serif;font-style:italic;font-size:11px;color:{{ b.ink }};opacity:.85;">{{ b.author }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="height:11px;background:linear-gradient(#5a4632,#4a3826);border-radius:3px;box-shadow:0 10px 16px -8px rgba(0,0,0,.5);margin-top:-2px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer style="border-top:3px solid #2a2521;margin-top:44px;padding:22px 0 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;">
+      <div style="display:flex;gap:22px;flex-wrap:wrap;font-family:'Spline Sans Mono',monospace;font-size:12.5px;">
+        <a href="Home.dc.html" style="color:#b14a1e;" style-hover="color:#2a2521;">← back to cover</a>
+        <a href="https://letterboxd.com/aroduribe/" target="_blank" style="color:#b14a1e;" style-hover="color:#2a2521;">↗ letterboxd</a>
+        <a href="mailto:uribe.rodriguez@gmail.com" style="color:#b14a1e;" style-hover="color:#2a2521;">✉ say hello</a>
+      </div>
+      <div style="font-family:'Caveat',cursive;font-size:22px;color:#7c5530;">made by hand ✶</div>
+    </footer>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const films = [
+      { title: "Tuner", year: "2026", stars: "★★★" },
+      { title: "Backrooms", year: "2026", stars: "★★★" },
+      { title: "I Love Boosters", year: "2026", stars: "★★★½" },
+      { title: "Billie Eilish", year: "2026", stars: "★★★" },
+    ];
+    const books = [
+      { title: "The Magician's Nephew", author: "C.S. Lewis", tag: "FICTION", color: "#6e6a39", ink: "#f4e8cf", tilt: "-4deg" },
+      { title: "Famesick", author: "Lena Dunham", tag: "ESSAYS", color: "#b14a1e", ink: "#f4e8cf", tilt: "3deg" },
+      { title: "Super Nintendo", author: "Keza MacDonald", tag: "MEMOIR", color: "#cf9a2c", ink: "#2a2521", tilt: "-2deg" },
+      { title: "Two of Me", author: "Eleanor Coppola", tag: "MEMOIR", color: "#2a2521", ink: "#e7b34c", tilt: "4deg" },
+      { title: "Empire of AI", author: "Karen Hao", tag: "NONFICTION", color: "#4f6b58", ink: "#f4e8cf", tilt: "-3deg" },
+    ];
+    return { films, books };
+  }
+}
+</script>
+</body>
+</html>
