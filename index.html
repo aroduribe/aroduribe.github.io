@@ -121,14 +121,27 @@
           <div style="font-family:'Gluten',cursive;font-weight:700;font-size:clamp(20px,3vw,26px);color:#2a2521;">The Film Diary</div>
           <a class="link-rust-brown" href="https://letterboxd.com/aroduribe/" target="_blank" rel="noopener" style="font-family:'Spline Sans Mono',monospace;font-size:12px;">↗ follow on letterboxd</a>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px;">
+        <!-- Latest 4 from Letterboxd, baked in at deploy time by scripts/fetch-films.js.
+             These static entries are the fallback if the feed fetch ever fails. -->
+        <div id="filmDiary" style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px;">
 
           <div style="display:flex;gap:14px;">
             <div style="position:relative;flex:0 0 70px;height:104px;background:repeating-linear-gradient(135deg,#7c5530 0 9px,#6c4626 9px 18px);border:2px solid #2a2521;display:flex;align-items:flex-end;padding:5px;">
               <span style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 3px;">poster</span>
             </div>
             <div style="flex:1;">
-              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">Tuner <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2026</span></div>
+              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">Disclosure Day <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2026</span></div>
+              <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★★½</div>
+              <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:14px;">
+            <div style="position:relative;flex:0 0 70px;height:104px;background:repeating-linear-gradient(135deg,#7c5530 0 9px,#6c4626 9px 18px);border:2px solid #2a2521;display:flex;align-items:flex-end;padding:5px;">
+              <span style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 3px;">poster</span>
+            </div>
+            <div style="flex:1;">
+              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">Tuner <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2025</span></div>
               <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★</div>
               <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
             </div>
@@ -140,17 +153,6 @@
             </div>
             <div style="flex:1;">
               <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">Backrooms <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2026</span></div>
-              <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★</div>
-              <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
-            </div>
-          </div>
-
-          <div style="display:flex;gap:14px;">
-            <div style="position:relative;flex:0 0 70px;height:104px;background:repeating-linear-gradient(135deg,#7c5530 0 9px,#6c4626 9px 18px);border:2px solid #2a2521;display:flex;align-items:flex-end;padding:5px;">
-              <span style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 3px;">poster</span>
-            </div>
-            <div style="flex:1;">
-              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">I Love Boosters <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2026</span></div>
               <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★½</div>
               <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
             </div>
@@ -161,8 +163,8 @@
               <span style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 3px;">poster</span>
             </div>
             <div style="flex:1;">
-              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">Billie Eilish <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2026</span></div>
-              <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★</div>
+              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">Spit Me Out <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2025</span></div>
+              <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★★★</div>
               <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
             </div>
           </div>
@@ -266,5 +268,6 @@
   </div>
 </div>
 <script src="assets/js/home.js"></script>
+<script src="assets/js/films.js"></script>
 </body>
 </html>

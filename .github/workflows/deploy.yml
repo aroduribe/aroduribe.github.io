@@ -25,13 +25,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch latest films from Letterboxd
+        # Writes films.json from the RSS feed. Self-guards (exits 0 on failure),
+        # so a fetch error never blocks the deploy — the page keeps its fallback.
+        run: node scripts/fetch-films.js
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # The site is static at the repo root — no build step.
+          # Static site at the repo root; films.json is generated above.
           path: .
 
       - name: Deploy to GitHub Pages
