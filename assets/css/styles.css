@@ -51,9 +51,66 @@ a { color: inherit; text-decoration: none; }
 .contents-row:hover .navarrow .shaft { animation: squigShaft .5s cubic-bezier(.5, 0, .3, 1) both; }
 .contents-row:hover .navarrow .head { animation: squigShaft .28s ease .34s both; }
 
-/* "Now Playing" card + day-job button — hard offset shadow */
-.now-card:hover { box-shadow: 5px 5px 0 #2a2521; }
-.dayjob-btn:hover { box-shadow: 5px 5px 0 #b14a1e; }
+/* Projects list — leader-line rows that reveal a description inside a soft
+   card on hover/focus (inspired by rog.ie). */
+.project-row {
+  display: flex;
+  align-items: center;
+  padding: 13px 14px;
+  border-radius: 12px;
+  color: #2a2521;
+  transition: background .25s ease, box-shadow .25s ease;
+}
+.project-row:hover,
+.project-row:focus-visible {
+  background: #fffaf0;
+  box-shadow: 0 6px 20px -10px rgba(42, 37, 33, .5);
+}
+.project-row:focus-visible { outline: 2px solid #b14a1e; outline-offset: 2px; }
+
+.project-icon { flex: none; display: flex; margin-right: 14px; color: #7c5530; }
+.project-icon svg { width: 20px; height: 20px; display: block; }
+
+.project-name {
+  font-family: 'Gluten', cursive;
+  font-weight: 600;
+  font-size: clamp(19px, 2.6vw, 24px);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* Description: collapsed by default, expands between name and leader on hover. */
+.project-desc {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: #6e6459;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  margin-left: 0;
+  transition: max-width .35s ease, opacity .3s ease, margin-left .35s ease;
+}
+.project-row:hover .project-desc,
+.project-row:focus-visible .project-desc {
+  max-width: 360px;
+  opacity: 1;
+  margin-left: 12px;
+}
+
+.project-leader { flex: 1 1 24px; min-width: 24px; height: 1px; background: #d8c39a; margin: 0 16px; }
+
+.project-year {
+  flex: none;
+  font-family: 'Spline Sans Mono', monospace;
+  font-size: 14px;
+  color: #a89a7c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-row, .project-desc { transition-duration: .01ms; }
+}
 
 /* Cover top tape peel hover nudge */
 .cover-tape:hover { transform: rotate(5deg) translateY(-2px); }
