@@ -40,14 +40,15 @@
     var review = f.review
       ? '<div style="font-family:\'Newsreader\',serif;font-style:italic;font-size:13px;line-height:1.4;color:#6e6459;margin:2px 0 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + esc(f.review) + '</div>'
       : "";
-    return '<div style="display:flex;gap:14px;">' +
-        poster(f) +
+    var inner = poster(f) +
         '<div style="flex:1;min-width:0;">' +
           '<div style="font-family:\'Gluten\',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">' + esc(f.title) + year + '</div>' +
           '<div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">' + esc(f.stars) + '</div>' +
           review +
           '<div style="font-family:\'Spline Sans Mono\',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>' +
-        '</div>' +
-      '</div>';
+        '</div>';
+    return f.link
+      ? '<a class="review-row" href="' + attr(f.link) + '" target="_blank" rel="noopener">' + inner + '</a>'
+      : '<div class="review-row">' + inner + '</div>';
   }
 })();

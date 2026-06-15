@@ -36,6 +36,10 @@ a { color: inherit; text-decoration: none; }
 .link-rust-brown { color: #b14a1e; }
 .link-rust-brown:hover { color: #7c5530; }
 
+/* Recent Reviews rows — each links to the film's Letterboxd review. */
+.review-row { display: flex; gap: 14px; color: inherit; transition: opacity .15s ease; }
+.review-row:hover { opacity: .78; }
+
 /* Projects list — leader-line rows that reveal a description inside a soft
    card on hover/focus (inspired by rog.ie). */
 .project-row {

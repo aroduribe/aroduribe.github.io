@@ -118,14 +118,14 @@
       <!-- The Film Diary -->
       <div style="margin-top:18px;">
         <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:2px solid #2a2521;padding-bottom:8px;">
-          <div style="font-family:'Gluten',cursive;font-weight:700;font-size:clamp(20px,3vw,26px);color:#2a2521;">The Film Diary</div>
+          <div style="font-family:'Gluten',cursive;font-weight:700;font-size:clamp(20px,3vw,26px);color:#2a2521;">Recent Reviews</div>
           <a class="link-rust-brown" href="https://letterboxd.com/aroduribe/" target="_blank" rel="noopener" style="font-family:'Spline Sans Mono',monospace;font-size:12px;">↗ follow on letterboxd</a>
         </div>
         <!-- Latest 4 from Letterboxd, baked in at deploy time by scripts/fetch-films.js.
              These static entries are the fallback if the feed fetch ever fails. -->
         <div id="filmDiary" style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px;">
 
-          <div style="display:flex;gap:14px;">
+          <a class="review-row" href="https://letterboxd.com/aroduribe/film/disclosure-day/" target="_blank" rel="noopener">
             <div style="position:relative;flex:0 0 70px;height:104px;border:2px solid #2a2521;overflow:hidden;background:#211d18;">
               <img src="https://a.ltrbxd.com/resized/film-poster/1/1/5/9/2/5/1/1159251-disclosure-day-0-600-0-900-crop.jpg?v=9ae810e4bb" alt="Disclosure Day poster" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
@@ -135,9 +135,9 @@
               <div style="font-family:'Newsreader',serif;font-style:italic;font-size:13px;line-height:1.4;color:#6e6459;margin:2px 0 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">The cinematography had me transfixed from the start. Those last ten minutes pushed me right to the edge of tears. There&rsquo;s something about it that feels essential right now like it&rsquo;s speaking directly to where the world</div>
               <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
             </div>
-          </div>
+          </a>
 
-          <div style="display:flex;gap:14px;">
+          <a class="review-row" href="https://letterboxd.com/aroduribe/film/tuner/" target="_blank" rel="noopener">
             <div style="position:relative;flex:0 0 70px;height:104px;border:2px solid #2a2521;overflow:hidden;background:#211d18;">
               <img src="https://a.ltrbxd.com/resized/film-poster/1/2/3/4/8/7/8/1234878-tuner-0-600-0-900-crop.jpg?v=075156069b" alt="Tuner poster" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
@@ -146,9 +146,9 @@
               <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★</div>
               <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
             </div>
-          </div>
+          </a>
 
-          <div style="display:flex;gap:14px;">
+          <a class="review-row" href="https://letterboxd.com/aroduribe/film/backrooms-2026/" target="_blank" rel="noopener">
             <div style="position:relative;flex:0 0 70px;height:104px;border:2px solid #2a2521;overflow:hidden;background:#211d18;">
               <img src="https://a.ltrbxd.com/resized/film-poster/9/7/6/4/1/9/976419-backrooms-2026-0-600-0-900-crop.jpg?v=f7a99e3fc8" alt="Backrooms poster" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
@@ -157,9 +157,9 @@
               <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★½</div>
               <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
             </div>
-          </div>
+          </a>
 
-          <div style="display:flex;gap:14px;">
+          <a class="review-row" href="https://letterboxd.com/aroduribe/film/spit-me-out/" target="_blank" rel="noopener">
             <div style="position:relative;flex:0 0 70px;height:104px;border:2px solid #2a2521;overflow:hidden;background:#211d18;">
               <img src="https://a.ltrbxd.com/resized/film-poster/1/3/9/5/2/5/5/1395255-spit-me-out-0-600-0-900-crop.jpg?v=1310ffeef2" alt="Spit Me Out poster" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
@@ -168,7 +168,7 @@
               <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★★★</div>
               <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
             </div>
-          </div>
+          </a>
 
         </div>
       </div>
