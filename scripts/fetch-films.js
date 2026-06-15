@@ -36,6 +36,30 @@ function stars(ratingStr) {
   return "★".repeat(Math.floor(r)) + (r % 1 >= 0.5 ? "½" : "");
 }
 
+// The <description> CDATA holds the poster <img> then the review paragraphs.
+function extractDesc(block) {
+  var m = block.match(/<description>([\s\S]*?)<\/description>/);
+  if (!m) return { poster: "", review: "" };
+  var d = m[1].replace("<![CDATA[", "").replace("]]>", "");
+
+  var pm = d.match(/<img[^>]+src="([^"]+)"/);
+  var poster = pm ? pm[1] : "";
+
+  var review = decode(
+    d.replace(/<img[^>]*>/g, "")  // drop the poster image
+      .replace(/<[^>]+>/g, " ")   // strip remaining tags
+      .replace(/\s+/g, " ")
+  );
+  // Letterboxd inserts "Watched on <date>." when there is no written review.
+  if (/^Watched on .+\.?$/i.test(review)) review = "";
+  if (review.length > 220) {
+    review = review.slice(0, 220);
+    var sp = review.lastIndexOf(" ");
+    if (sp > 120) review = review.slice(0, sp);
+  }
+  return { poster: poster, review: review };
+}
+
 (async function () {
   try {
     const res = await fetch(FEED, {
@@ -50,11 +74,14 @@ function stars(ratingStr) {
       const block = raw.split("</item>")[0];
       const title = pick(block, "letterboxd:filmTitle");
       if (!title) continue; // skip non-film activity (lists, etc.)
+      const desc = extractDesc(block);
       films.push({
         title: decode(title),
         year: pick(block, "letterboxd:filmYear"),
         stars: stars(pick(block, "letterboxd:memberRating")),
         link: pick(block, "link"),
+        poster: desc.poster,
+        review: desc.review,
       });
       if (films.length >= COUNT) break;
     }
