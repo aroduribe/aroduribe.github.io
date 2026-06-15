@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alex Rodriguez — A Personal Zine</title>
-<meta name="description" content="Alex Rodriguez — engineer by day, lots of other things otherwise. A personal zine: projects, a Now page, and an editor's note.">
+<meta name="description" content="Alex Rodriguez — engineer by day, lots of other things otherwise. A personal zine: projects, hobbies, and an editor's note.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -58,9 +58,20 @@
     <section style="border-bottom:2px solid #2a2521;padding:8px 0 4px;">
       <div style="font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.16em;color:#b14a1e;padding:12px 0 6px;">CONTENTS — POKE AROUND</div>
 
-      <a class="contents-row" href="now.html" style="display:flex;align-items:center;gap:12px;padding:15px 6px;border-top:1px solid #d8c39a;cursor:pointer;">
-        <span style="font-family:'Spline Sans Mono',monospace;font-size:13px;color:#7c5530;width:34px;">p.08</span>
-        <span style="font-family:'Gluten',cursive;font-weight:700;font-size:clamp(24px,4vw,38px);line-height:1;color:#2a2521;">Now</span>
+      <a class="contents-row" href="#projects" style="display:flex;align-items:center;gap:12px;padding:15px 6px;border-top:1px solid #d8c39a;cursor:pointer;">
+        <span style="font-family:'Spline Sans Mono',monospace;font-size:13px;color:#7c5530;width:34px;">p.01</span>
+        <span style="font-family:'Gluten',cursive;font-weight:700;font-size:clamp(24px,4vw,38px);line-height:1;color:#2a2521;">Projects</span>
+        <span style="flex:1;"></span>
+        <span style="font-family:'Newsreader',serif;font-style:italic;font-size:15px;color:#6e6459;text-align:right;">things i've shipped</span>
+        <svg class="navarrow" width="46" height="24" viewBox="0 0 46 24" style="overflow:visible;flex:none;">
+          <path class="shaft" pathLength="100" d="M2,15 C7,7 12,6 15,12 C17,16 12,17 12,13 C12,7 24,9 34,12" fill="none" stroke="#b14a1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path class="head" pathLength="100" d="M40,12 l-7,-5 m7,5 l-7,5" fill="none" stroke="#b14a1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+
+      <a class="contents-row" href="#hobbies" style="display:flex;align-items:center;gap:12px;padding:15px 6px;border-top:1px solid #d8c39a;cursor:pointer;">
+        <span style="font-family:'Spline Sans Mono',monospace;font-size:13px;color:#7c5530;width:34px;">p.02</span>
+        <span style="font-family:'Gluten',cursive;font-weight:700;font-size:clamp(24px,4vw,38px);line-height:1;color:#2a2521;">Hobbies</span>
         <span style="flex:1;"></span>
         <span style="font-family:'Newsreader',serif;font-style:italic;font-size:15px;color:#6e6459;text-align:right;">watching · reading</span>
         <svg class="navarrow" width="46" height="24" viewBox="0 0 46 24" style="overflow:visible;flex:none;">
@@ -88,7 +99,7 @@
     </section>
 
     <!-- ===== PROJECTS ===== -->
-    <section style="padding:30px 0;">
+    <section id="projects" style="padding:30px 0;scroll-margin-top:24px;">
       <div style="font-family:'Gluten',cursive;font-weight:800;font-size:clamp(26px,3.5vw,36px);color:#2a2521;margin-bottom:10px;">Projects</div>
       <div class="projects-list">
 
@@ -124,6 +135,148 @@
           <span class="project-year">2023</span>
         </a>
 
+      </div>
+    </section>
+
+    <!-- ===== HOBBIES ===== -->
+    <section id="hobbies" style="padding:30px 0;border-top:2px solid #2a2521;scroll-margin-top:24px;">
+      <div style="font-family:'Gluten',cursive;font-weight:800;font-size:clamp(26px,3.5vw,36px);color:#2a2521;margin-bottom:6px;">Hobbies</div>
+
+      <!-- The Film Diary -->
+      <div style="margin-top:18px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:2px solid #2a2521;padding-bottom:8px;">
+          <div style="font-family:'Gluten',cursive;font-weight:700;font-size:clamp(20px,3vw,26px);color:#2a2521;">The Film Diary</div>
+          <a class="link-rust-brown" href="https://letterboxd.com/aroduribe/" target="_blank" rel="noopener" style="font-family:'Spline Sans Mono',monospace;font-size:12px;">↗ follow on letterboxd</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px;">
+
+          <div style="display:flex;gap:14px;">
+            <div style="position:relative;flex:0 0 70px;height:104px;background:repeating-linear-gradient(135deg,#7c5530 0 9px,#6c4626 9px 18px);border:2px solid #2a2521;display:flex;align-items:flex-end;padding:5px;">
+              <span style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 3px;">poster</span>
+            </div>
+            <div style="flex:1;">
+              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">Tuner <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2026</span></div>
+              <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★</div>
+              <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:14px;">
+            <div style="position:relative;flex:0 0 70px;height:104px;background:repeating-linear-gradient(135deg,#7c5530 0 9px,#6c4626 9px 18px);border:2px solid #2a2521;display:flex;align-items:flex-end;padding:5px;">
+              <span style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 3px;">poster</span>
+            </div>
+            <div style="flex:1;">
+              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">Backrooms <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2026</span></div>
+              <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★</div>
+              <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:14px;">
+            <div style="position:relative;flex:0 0 70px;height:104px;background:repeating-linear-gradient(135deg,#7c5530 0 9px,#6c4626 9px 18px);border:2px solid #2a2521;display:flex;align-items:flex-end;padding:5px;">
+              <span style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 3px;">poster</span>
+            </div>
+            <div style="flex:1;">
+              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">I Love Boosters <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2026</span></div>
+              <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★½</div>
+              <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:14px;">
+            <div style="position:relative;flex:0 0 70px;height:104px;background:repeating-linear-gradient(135deg,#7c5530 0 9px,#6c4626 9px 18px);border:2px solid #2a2521;display:flex;align-items:flex-end;padding:5px;">
+              <span style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 3px;">poster</span>
+            </div>
+            <div style="flex:1;">
+              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:18px;line-height:1.1;color:#2a2521;">Billie Eilish <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:14px;color:#6e6459;">2026</span></div>
+              <div style="font-size:16px;color:#b14a1e;letter-spacing:1px;margin:3px 0 6px;">★★★</div>
+              <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;color:#9a8b73;">logged on Letterboxd</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- The Shelf -->
+      <div style="margin-top:42px;">
+        <div style="border-bottom:2px solid #2a2521;padding-bottom:8px;">
+          <div style="font-family:'Gluten',cursive;font-weight:700;font-size:clamp(20px,3vw,26px);color:#2a2521;">The Shelf</div>
+        </div>
+        <div style="margin-top:18px;">
+          <!-- current read -->
+          <div style="display:flex;gap:18px;border:2px solid #2a2521;background:#fffaf0;padding:16px;box-shadow:5px 5px 0 #e7d9b7;max-width:540px;">
+            <div style="position:relative;flex:0 0 92px;height:138px;background:repeating-linear-gradient(135deg,#6e6a39 0 10px,#5c5930 10px 20px);border:2px solid #2a2521;display:flex;align-items:flex-end;padding:6px;">
+              <span style="font-family:'Spline Sans Mono',monospace;font-size:8px;color:#f1e6cf;background:rgba(33,29,24,.55);padding:1px 4px;">cover</span>
+            </div>
+            <div>
+              <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.14em;color:#b14a1e;">CURRENTLY READING</div>
+              <div style="font-family:'Gluten',cursive;font-weight:700;font-size:22px;line-height:1.1;color:#2a2521;margin-top:4px;">The House of Mirth</div>
+              <div style="font-family:'Newsreader',serif;font-style:italic;font-size:14px;color:#6e6459;">Edith Wharton</div>
+              <p style="font-family:'Newsreader',serif;font-size:14.5px;line-height:1.5;color:#403a33;margin:8px 0 0;">Also in the stack right now: <em>The Wonderful World That Almost Was</em> by Andrew Durbin and <em>The Land and Its People</em> by David Sedaris.</p>
+            </div>
+          </div>
+          <!-- recently finished, leaning covers -->
+          <div style="margin-top:30px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
+              <div style="font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.14em;color:#7c5530;">RECENTLY FINISHED</div>
+              <div style="font-family:'Caveat',cursive;font-size:20px;color:#7c5530;">…and a growing stack of half-finished ones.</div>
+            </div>
+            <div style="display:flex;align-items:flex-end;gap:0;padding:28px 10px 0 24px;">
+
+              <div class="book-spine" style="position:relative;flex:0 0 auto;width:122px;aspect-ratio:2/3;border-radius:2px 5px 5px 2px;box-shadow:0 12px 24px -10px rgba(0,0,0,.55);overflow:hidden;background:#6e6a39;transform:rotate(-4deg);margin-left:-14px;">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:6px;background:rgba(0,0,0,.22);"></div>
+                <div style="position:absolute;inset:0;padding:13px 12px 11px 15px;display:flex;flex-direction:column;">
+                  <div style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;letter-spacing:.14em;opacity:.7;color:#f4e8cf;">FICTION</div>
+                  <div style="width:22px;height:2px;background:#f4e8cf;opacity:.5;margin:6px 0 9px;"></div>
+                  <div style="font-family:'Gluten',cursive;font-weight:700;font-size:16px;line-height:1.02;color:#f4e8cf;">The Magician's Nephew</div>
+                  <div style="margin-top:auto;font-family:'Newsreader',serif;font-style:italic;font-size:11px;color:#f4e8cf;opacity:.85;">C.S. Lewis</div>
+                </div>
+              </div>
+
+              <div class="book-spine" style="position:relative;flex:0 0 auto;width:122px;aspect-ratio:2/3;border-radius:2px 5px 5px 2px;box-shadow:0 12px 24px -10px rgba(0,0,0,.55);overflow:hidden;background:#b14a1e;transform:rotate(3deg);margin-left:-14px;">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:6px;background:rgba(0,0,0,.22);"></div>
+                <div style="position:absolute;inset:0;padding:13px 12px 11px 15px;display:flex;flex-direction:column;">
+                  <div style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;letter-spacing:.14em;opacity:.7;color:#f4e8cf;">ESSAYS</div>
+                  <div style="width:22px;height:2px;background:#f4e8cf;opacity:.5;margin:6px 0 9px;"></div>
+                  <div style="font-family:'Gluten',cursive;font-weight:700;font-size:16px;line-height:1.02;color:#f4e8cf;">Famesick</div>
+                  <div style="margin-top:auto;font-family:'Newsreader',serif;font-style:italic;font-size:11px;color:#f4e8cf;opacity:.85;">Lena Dunham</div>
+                </div>
+              </div>
+
+              <div class="book-spine" style="position:relative;flex:0 0 auto;width:122px;aspect-ratio:2/3;border-radius:2px 5px 5px 2px;box-shadow:0 12px 24px -10px rgba(0,0,0,.55);overflow:hidden;background:#cf9a2c;transform:rotate(-2deg);margin-left:-14px;">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:6px;background:rgba(0,0,0,.22);"></div>
+                <div style="position:absolute;inset:0;padding:13px 12px 11px 15px;display:flex;flex-direction:column;">
+                  <div style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;letter-spacing:.14em;opacity:.7;color:#2a2521;">MEMOIR</div>
+                  <div style="width:22px;height:2px;background:#2a2521;opacity:.5;margin:6px 0 9px;"></div>
+                  <div style="font-family:'Gluten',cursive;font-weight:700;font-size:16px;line-height:1.02;color:#2a2521;">Super Nintendo</div>
+                  <div style="margin-top:auto;font-family:'Newsreader',serif;font-style:italic;font-size:11px;color:#2a2521;opacity:.85;">Keza MacDonald</div>
+                </div>
+              </div>
+
+              <div class="book-spine" style="position:relative;flex:0 0 auto;width:122px;aspect-ratio:2/3;border-radius:2px 5px 5px 2px;box-shadow:0 12px 24px -10px rgba(0,0,0,.55);overflow:hidden;background:#2a2521;transform:rotate(4deg);margin-left:-14px;">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:6px;background:rgba(0,0,0,.22);"></div>
+                <div style="position:absolute;inset:0;padding:13px 12px 11px 15px;display:flex;flex-direction:column;">
+                  <div style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;letter-spacing:.14em;opacity:.7;color:#e7b34c;">MEMOIR</div>
+                  <div style="width:22px;height:2px;background:#e7b34c;opacity:.5;margin:6px 0 9px;"></div>
+                  <div style="font-family:'Gluten',cursive;font-weight:700;font-size:16px;line-height:1.02;color:#e7b34c;">Two of Me</div>
+                  <div style="margin-top:auto;font-family:'Newsreader',serif;font-style:italic;font-size:11px;color:#e7b34c;opacity:.85;">Eleanor Coppola</div>
+                </div>
+              </div>
+
+              <div class="book-spine" style="position:relative;flex:0 0 auto;width:122px;aspect-ratio:2/3;border-radius:2px 5px 5px 2px;box-shadow:0 12px 24px -10px rgba(0,0,0,.55);overflow:hidden;background:#4f6b58;transform:rotate(-3deg);margin-left:-14px;">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:6px;background:rgba(0,0,0,.22);"></div>
+                <div style="position:absolute;inset:0;padding:13px 12px 11px 15px;display:flex;flex-direction:column;">
+                  <div style="font-family:'Spline Sans Mono',monospace;font-size:7.5px;letter-spacing:.14em;opacity:.7;color:#f4e8cf;">NONFICTION</div>
+                  <div style="width:22px;height:2px;background:#f4e8cf;opacity:.5;margin:6px 0 9px;"></div>
+                  <div style="font-family:'Gluten',cursive;font-weight:700;font-size:16px;line-height:1.02;color:#f4e8cf;">Empire of AI</div>
+                  <div style="margin-top:auto;font-family:'Newsreader',serif;font-style:italic;font-size:11px;color:#f4e8cf;opacity:.85;">Karen Hao</div>
+                </div>
+              </div>
+
+            </div>
+            <div style="height:11px;background:linear-gradient(#5a4632,#4a3826);border-radius:3px;box-shadow:0 10px 16px -8px rgba(0,0,0,.5);margin-top:-2px;"></div>
+          </div>
+        </div>
       </div>
     </section>
 
