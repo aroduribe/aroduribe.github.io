@@ -36,12 +36,21 @@ a { color: inherit; text-decoration: none; }
 .link-rust-brown { color: #b14a1e; }
 .link-rust-brown:hover { color: #7c5530; }
 
+/* Top nav (page links) — ink→rust. Brand fades slightly. */
+.nav-link { color: #2a2521; }
+.nav-link:hover { color: #b14a1e; }
+.brand:hover { opacity: .7; }
+
 /* Recent Reviews rows — each links to the film's Letterboxd review. */
 .review-row { display: flex; gap: 14px; color: inherit; transition: opacity .15s ease; }
 .review-row:hover { opacity: .78; }
 
 /* Projects list — leader-line rows that reveal a description inside a soft
-   card on hover/focus (inspired by rog.ie). */
+   card on hover/focus (inspired by rog.ie).
+   Query container so long names wrap on narrow screens (see @container below)
+   instead of forcing horizontal page overflow. */
+.projects-list { container-type: inline-size; }
+
 .project-row {
   display: flex;
   align-items: center;
@@ -66,6 +75,15 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(19px, 2.6vw, 24px);
   line-height: 1.1;
   white-space: nowrap;
+}
+
+/* On narrow screens let the name wrap and drop the decorative leader line, so a
+   long title like "Scaled Variable Management" can't push the row past the
+   viewport. The year is pinned right in the leader's place. */
+@container (max-width: 460px) {
+  .project-name { white-space: normal; overflow-wrap: break-word; }
+  .project-leader { display: none; }
+  .project-year { margin-left: auto; padding-left: 12px; }
 }
 
 /* Description: collapsed by default, expands between name and leader on hover. */
