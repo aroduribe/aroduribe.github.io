@@ -35,6 +35,10 @@ jobs:
         # so a fetch error never blocks the deploy — the page keeps its fallback.
         run: node scripts/fetch-films.js
 
+      - name: Fetch The Shelf from Goodreads
+        # Writes books.json from the Goodreads RSS shelves. Self-guards too.
+        run: node scripts/fetch-books.js
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
