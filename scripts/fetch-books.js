@@ -47,11 +47,12 @@ function cleanTitle(t) {
 }
 
 function book(block) {
+  const bookId = decode(pick(block, "book_id"));
   return {
     title: cleanTitle(decode(pick(block, "title"))),
     author: decode(pick(block, "author_name")),
     cover: decode(pick(block, "book_large_image_url")),
-    link: decode(pick(block, "link")),
+    link: bookId ? "https://www.goodreads.com/book/show/" + bookId : decode(pick(block, "link")),
   };
 }
 
