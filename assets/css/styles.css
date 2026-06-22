@@ -149,3 +149,8 @@ a { color: inherit; text-decoration: none; }
 /* Cover tape: hidden until JS triggers the peel */
 #coverTape { opacity: 0; }
 #coverTape[data-peel="go"] { animation: tapePeel 1.1s cubic-bezier(.34, 1.3, .5, 1) both; }
+
+/* Hide extra book spines on narrow screens */
+@media (max-width: 480px) {
+  .book-spine--extra { display: none; }
+}

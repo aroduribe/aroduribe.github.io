@@ -51,7 +51,7 @@
     if (!el) return;
     var tilts = ["-4deg", "3deg", "-2deg", "4deg", "-3deg"];
     el.innerHTML = books.map(function (b, i) {
-      return '<div class="book-spine" style="position:relative;flex:0 0 auto;width:122px;aspect-ratio:2/3;' +
+      return '<div class="book-spine' + (i >= 2 ? ' book-spine--extra' : '') + '" style="position:relative;flex:0 0 auto;width:122px;aspect-ratio:2/3;' +
         'border-radius:2px 5px 5px 2px;box-shadow:0 12px 24px -10px rgba(0,0,0,.55);overflow:hidden;' +
         'transform:rotate(' + tilts[i % tilts.length] + ');margin-left:-14px;background:#211d18;">' +
         cover(b.cover, b.title + " by " + b.author) +
