@@ -29,15 +29,11 @@
     var el = document.getElementById("currentlyReading");
     if (!el) return;
     var feat = books[0];
-    var rest = books.slice(1);
-    var stack = "";
-    if (rest.length) {
-      var parts = rest.map(function (b) { return "<em>" + esc(b.title) + "</em> by " + esc(b.author); });
-      var joined = parts.length > 1
-        ? parts.slice(0, -1).join(", ") + ", and " + parts[parts.length - 1]
-        : parts[0];
-      stack = '<p style="font-family:\'Newsreader\',serif;font-size:14.5px;line-height:1.5;color:#403a33;margin:8px 0 0;">Also in the stack right now: ' + joined + ".</p>";
-    }
+    var grLink = feat.link
+      ? '<a href="' + attr(feat.link) + '" target="_blank" rel="noopener" ' +
+        'style="display:inline-block;margin-top:8px;font-family:\'Spline Sans Mono\',monospace;font-size:10px;' +
+        'letter-spacing:.08em;color:#b14a1e;text-decoration:none;">↗ view on goodreads</a>'
+      : "";
     el.innerHTML =
       '<div style="position:relative;flex:0 0 92px;height:138px;border:2px solid #2a2521;overflow:hidden;background:#211d18;">' +
         cover(feat.cover, feat.title + " by " + feat.author) +
@@ -46,7 +42,7 @@
         '<div style="font-family:\'Spline Sans Mono\',monospace;font-size:10px;letter-spacing:.14em;color:#b14a1e;">CURRENTLY READING</div>' +
         '<div style="font-family:\'Gluten\',cursive;font-weight:700;font-size:22px;line-height:1.1;color:#2a2521;margin-top:4px;">' + esc(feat.title) + '</div>' +
         '<div style="font-family:\'Newsreader\',serif;font-style:italic;font-size:14px;color:#6e6459;">' + esc(feat.author) + '</div>' +
-        stack +
+        grLink +
       '</div>';
   }
 
