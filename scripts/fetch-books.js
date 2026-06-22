@@ -5,7 +5,7 @@
 const fs = require("fs");
 
 const USER = "10314208";
-const READ_COUNT = 5;
+const READ_COUNT = 8;
 const FEEDS = {
   current: "https://www.goodreads.com/review/list_rss/" + USER + "?shelf=currently-reading",
   read: "https://www.goodreads.com/review/list_rss/" + USER + "?shelf=read",
