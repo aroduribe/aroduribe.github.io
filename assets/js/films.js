@@ -12,7 +12,8 @@
       if (!Array.isArray(films) || films.length === 0) return;
       grid.innerHTML = films.slice(0, 4).map(entry).join("");
     })
-    .catch(function () { /* keep the static fallback */ });
+    .catch(function () { /* keep the static fallback */ })
+    .finally(function () { grid.classList.add("shelf-ready"); });
 
   function esc(s) {
     var d = document.createElement("div");

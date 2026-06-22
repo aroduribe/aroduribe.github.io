@@ -11,7 +11,13 @@
       if (data && Array.isArray(data.current) && data.current.length) renderCurrent(data.current);
       if (data && Array.isArray(data.read) && data.read.length) renderShelf(data.read);
     })
-    .catch(function () { /* keep the static fallback */ });
+    .catch(function () { /* keep the static fallback */ })
+    .finally(function () {
+      ["currentlyReading", "bookShelf"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.add("shelf-ready");
+      });
+    });
 
   function esc(s) {
     var d = document.createElement("div");
