@@ -165,11 +165,16 @@ a { color: inherit; text-decoration: none; }
 #filmDiary, #currentlyReading, #bookShelf { opacity: 0; transition: opacity .25s ease; }
 .shelf-ready { opacity: 1 !important; }
 
-/* Narrow screens: smaller covers so five fit across instead of two at full
-   size. !important beats the inline width/display; > :nth-child counts the <a> wrappers
-   books.js adds around linked covers, not just bare spines. */
+/* Covers are 122px at most but shrink so the whole shelf fits its width;
+   at fixed size, ten covers ran off the page on anything between a phone and
+   a laptop (e.g. a phone in landscape). !important beats the inline flex/width. */
+#bookShelf .book-spine { flex: 0 1 122px !important; width: auto !important; min-width: 0; }
+
+/* Narrow screens: ten shrunken covers would be too small to read, so show
+   five. > :nth-child counts the <a> wrappers books.js adds around linked
+   covers, not just bare spines. */
 @media (max-width: 480px) {
   #bookShelf { padding-left: 20px !important; padding-right: 0 !important; }
-  #bookShelf .book-spine { width: 74px !important; }
+  #bookShelf .book-spine { flex-basis: 74px !important; }
   #bookShelf > :nth-child(n+6) { display: none !important; }
 }
