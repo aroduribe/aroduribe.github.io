@@ -8,6 +8,11 @@ const fs = require("fs");
 
 const USER = "10314208";
 const READ_COUNT = 10;
+// Pin which currently-reading book gets the featured slot (matched on the
+// start of the title). Goodreads has no "featured" concept and several books
+// are on the shelf at once, so newest-started isn't always the one to show.
+// Empty string = newest-started.
+const FEATURED = "Yesteryear";
 const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
   "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
@@ -85,6 +90,9 @@ function book(block) {
 (async function () {
   try {
     const current = (await blocks(FEEDS.current)).map(book).filter((b) => b.title);
+    const pin = FEATURED ? current.findIndex((b) => b.title.toLowerCase().startsWith(FEATURED.toLowerCase())) : -1;
+    if (FEATURED && pin < 0) console.warn("FEATURED book not on the shelf, using newest: " + FEATURED);
+    if (pin > 0) current.unshift(current.splice(pin, 1)[0]);
     const read = (await blocks(FEEDS.read)).map(book).filter((b) => b.title).slice(0, READ_COUNT);
     if (!current.length && !read.length) throw new Error("no books parsed");
     fs.writeFileSync("books.json", JSON.stringify({ current: current, read: read }, null, 2) + "\n");
