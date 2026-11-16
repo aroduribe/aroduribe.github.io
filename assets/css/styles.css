@@ -165,6 +165,13 @@ a { color: inherit; text-decoration: none; }
 #filmDiary, #currentlyReading, #bookShelf { opacity: 0; transition: opacity .25s ease; }
 .shelf-ready { opacity: 1 !important; }
 
+/* Recent Reviews: one column on phones. In two columns, long title words
+   ("Antoinette") are wider than the text column and pushed the whole page
+   into sideways scroll. !important beats the inline grid-template-columns. */
+@media (max-width: 560px) {
+  #filmDiary { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
 /* Covers are 122px at most but shrink so the whole shelf fits its width;
    at fixed size, ten covers ran off the page on anything between a phone and
    a laptop (e.g. a phone in landscape). !important beats the inline flex/width. */
