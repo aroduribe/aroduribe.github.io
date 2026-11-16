@@ -165,7 +165,11 @@ a { color: inherit; text-decoration: none; }
 #filmDiary, #currentlyReading, #bookShelf { opacity: 0; transition: opacity .25s ease; }
 .shelf-ready { opacity: 1 !important; }
 
-/* Hide extra book spines on narrow screens */
+/* Narrow screens: smaller covers so five fit across instead of two at full
+   size. !important beats the inline width/display; > :nth-child counts the <a> wrappers
+   books.js adds around linked covers, not just bare spines. */
 @media (max-width: 480px) {
-  .book-spine--extra { display: none; }
+  #bookShelf { padding-left: 20px !important; padding-right: 0 !important; }
+  #bookShelf .book-spine { width: 74px !important; }
+  #bookShelf > :nth-child(n+6) { display: none !important; }
 }
