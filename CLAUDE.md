@@ -19,7 +19,8 @@ Static personal website/zine for Alex Rodriguez, deployed to GitHub Pages at aro
 ## Deployment
 
 - GitHub Actions workflow (`.github/workflows/`) runs on push to `main` and daily on a schedule: runs both fetch scripts, then deploys the repo root as a static site via `actions/deploy-pages`.
-- No build step beyond the two fetch scripts. Pushing to `main` deploys directly to production.
+- Local CSS/JS are linked as `...?v=dev`; the workflow swaps `dev` for the commit SHA so browsers can't pair stale cached CSS/JS with fresh JSON. Keep `?v=dev` on any new asset link.
+- No build step beyond the two fetch scripts and that version stamp. Pushing to `main` deploys directly to production.
 - DNS for `aroduribe.com` (the `CNAME` file's domain) is managed in Cloudflare, but DNS-only/grey-clouded — Cloudflare is not proxying traffic, caching, or terminating TLS in front of the site. GitHub Pages serves the site and handles its own TLS directly. Don't assume Cloudflare-specific caching/purging is relevant when debugging deploy or content-staleness issues.
 
 ## Conventions

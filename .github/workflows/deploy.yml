@@ -43,6 +43,12 @@ jobs:
         # Writes books.json from the Goodreads shelf widget. Self-guards too.
         run: node scripts/fetch-books.js
 
+      - name: Stamp asset versions
+        # The HTML links CSS/JS as ?v=dev; swap in the commit so every deploy
+        # gets new URLs. Without this, phones kept serving stale cached CSS/JS
+        # against fresh books.json (only 2 of 10 books showed on the shelf).
+        run: sed -i "s/?v=dev\"/?v=${GITHUB_SHA::7}\"/g" index.html hobbies.html
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
