@@ -11,14 +11,14 @@ Static personal website/zine for Alex Rodriguez, deployed to GitHub Pages at aro
 
 ## Data: books.json / films.json
 
-- `books.json` and `films.json` are generated at deploy time by `scripts/fetch-books.js` and `scripts/fetch-films.js`, which scrape Goodreads/Letterboxd RSS feeds (no public APIs exist for these).
+- `books.json` and `films.json` are generated at deploy time by `scripts/fetch-books.js` and `scripts/fetch-films.js`, which scrape the Goodreads public shelf widget (`/review/custom_widget/`; Goodreads retired its shelf RSS feeds in Oct 2026) and the Letterboxd RSS feed (no public APIs exist for these).
 - Both scripts exit 0 on failure by design, so a broken feed never blocks deployment — the page falls back to the static HTML already committed.
 - The corresponding `assets/js/books.js` / `films.js` fetch these JSON files client-side and replace static fallback markup if the fetch succeeds; otherwise the hardcoded fallback entries in the HTML remain.
-- When editing the fallback entries in `index.html`/`hobbies.html`, keep them realistic — they're what visitors see if the RSS fetch ever fails.
+- When editing the fallback entries in `index.html`/`hobbies.html`, keep them realistic — they're what visitors see if a fetch ever fails.
 
 ## Deployment
 
-- GitHub Actions workflow (`.github/workflows/`) runs on push to `main`: runs both fetch scripts, then deploys the repo root as a static site via `actions/deploy-pages`.
+- GitHub Actions workflow (`.github/workflows/`) runs on push to `main` and daily on a schedule: runs both fetch scripts, then deploys the repo root as a static site via `actions/deploy-pages`.
 - No build step beyond the two fetch scripts. Pushing to `main` deploys directly to production.
 - DNS for `aroduribe.com` (the `CNAME` file's domain) is managed in Cloudflare, but DNS-only/grey-clouded — Cloudflare is not proxying traffic, caching, or terminating TLS in front of the site. GitHub Pages serves the site and handles its own TLS directly. Don't assume Cloudflare-specific caching/purging is relevant when debugging deploy or content-staleness issues.
 
