@@ -21,3 +21,16 @@
     el.setAttribute("data-peel", "go");
   }, tapeDelay);
 })();
+
+// Masthead issue line tracks the current season so it never reads stale.
+// December counts as winter of the following year (Dec 2026 → WINTER 2027),
+// so one winter isn't split across two "issues".
+(function () {
+  var el = document.getElementById("issueSeason");
+  if (!el) return;
+  var now = new Date();
+  var m = now.getMonth();
+  var year = now.getFullYear() + (m === 11 ? 1 : 0);
+  var season = m === 11 || m < 2 ? "WINTER" : m < 5 ? "SPRING" : m < 8 ? "SUMMER" : "FALL";
+  el.textContent = "ISSUE: " + season + " " + year;
+})();
