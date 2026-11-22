@@ -4,41 +4,57 @@
    One-off layout lives inline in the HTML for fidelity.
    ============================================================ */
 
+/* ---------- Tokens ---------- */
+/* Palette used across the stylesheet, inline styles and the JS templates, so a
+   color tweak happens in one place. One-off shades stay as literal hex. */
+:root {
+  --ink: #2a2521;
+  --rust: #b14a1e;
+  --brown: #7c5530;
+  --muted: #6e6459;
+  --cream: #f4e8cf;
+  --paper: #fffaf0;
+  --cover: #211d18;
+  /* Paper texture, shared by .page and the intro loader so they can't drift. */
+  --crosshatch:
+    repeating-linear-gradient(45deg, rgb(124 85 48 / .035) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(-45deg, rgb(124 85 48 / .035) 0 1px, transparent 1px 5px);
+}
+
 /* ---------- Reset / globals ---------- */
 body { margin: 0; }
 a { color: inherit; text-decoration: none; }
 
 /* Page shell: warm cream + crosshatch texture */
 .page {
-  min-height: 100vh;
-  background: #f4e8cf;
-  background-image:
-    repeating-linear-gradient(45deg, rgba(124, 85, 48, .035) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(-45deg, rgba(124, 85, 48, .035) 0 1px, transparent 1px 5px);
+  min-height: 100vh; /* fallback for browsers without dynamic viewport units */
+  min-height: 100dvh; /* tracks the mobile address bar instead of overshooting it */
+  background: var(--cream);
+  background-image: var(--crosshatch);
   font-family: 'Newsreader', Georgia, serif;
-  color: #2a2521;
+  color: var(--ink);
 }
 
 /* Centered content column */
 .wrap {
   max-width: 1080px;
-  margin: 0 auto;
+  margin-inline: auto;
   padding: 0 28px 80px;
 }
 
 /* ---------- Hover states (lifted from style-hover attrs) ---------- */
 
 /* Generic rust→ink link swap (footers, teaser links) */
-.link-rust { color: #b14a1e; }
-.link-rust:hover { color: #2a2521; }
+.link-rust { color: var(--rust); }
+.link-rust:hover { color: var(--ink); }
 
 /* "↗ follow on letterboxd" — rust→brown */
-.link-rust-brown { color: #b14a1e; }
-.link-rust-brown:hover { color: #7c5530; }
+.link-rust-brown { color: var(--rust); }
+.link-rust-brown:hover { color: var(--brown); }
 
 /* Top nav (page links) — ink→rust. Brand fades slightly. */
-.nav-link { color: #2a2521; }
-.nav-link:hover { color: #b14a1e; }
+.nav-link { color: var(--ink); }
+.nav-link:hover { color: var(--rust); }
 .brand:hover { opacity: .7; }
 
 /* Recent Reviews rows — each links to the film's Letterboxd review. */
@@ -56,22 +72,22 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   padding: 13px 14px;
   border-radius: 12px;
-  color: #2a2521;
+  color: var(--ink);
   transition: background .25s ease, box-shadow .25s ease;
 }
 @media (hover: hover) {
   .project-row:hover {
-    background: #fffaf0;
-    box-shadow: 0 6px 20px -10px rgba(42, 37, 33, .5);
+    background: var(--paper);
+    box-shadow: 0 6px 20px -10px rgb(42 37 33 / .5);
   }
 }
 .project-row:focus-visible {
-  background: #fffaf0;
-  box-shadow: 0 6px 20px -10px rgba(42, 37, 33, .5);
+  background: var(--paper);
+  box-shadow: 0 6px 20px -10px rgb(42 37 33 / .5);
 }
-.project-row:focus-visible { outline: 2px solid #b14a1e; outline-offset: 2px; }
+.project-row:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
 
-.project-icon { flex: none; display: flex; margin-right: 14px; color: #7c5530; }
+.project-icon { flex: none; display: flex; margin-right: 14px; color: var(--brown); }
 .project-icon svg { width: 20px; height: 20px; display: block; }
 
 .project-name {
@@ -96,7 +112,7 @@ a { color: inherit; text-decoration: none; }
   font-family: 'Newsreader', serif;
   font-style: italic;
   font-size: 16px;
-  color: #6e6459;
+  color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
   max-width: 0;
@@ -133,9 +149,11 @@ a { color: inherit; text-decoration: none; }
 /* Cover top tape peel hover nudge */
 .cover-tape:hover { transform: rotate(5deg) translateY(-2px); }
 
-/* Book spines — straighten + lift (overrides inline rotate via class) */
-.book-spine { transition: transform .2s ease; }
-.book-spine:hover { transform: rotate(0deg) translateY(-7px) !important; }
+/* Book spines — straighten + lift. Each spine passes its tilt inline as
+   --tilt (not as rotate/transform, which inline would beat :hover), so the
+   hover can reset rotate and add a translate without !important. */
+.book-spine { rotate: var(--tilt, 0deg); transition: rotate .2s ease, translate .2s ease; }
+.book-spine:hover { rotate: 0deg; translate: 0 -7px; }
 
 /* ---------- Keyframes ---------- */
 @keyframes draw { to { stroke-dashoffset: 0; } }
@@ -163,25 +181,31 @@ a { color: inherit; text-decoration: none; }
 
 /* Prevent FOUC on dynamic sections — JS adds .shelf-ready after populating */
 #filmDiary, #currentlyReading, #bookShelf { opacity: 0; transition: opacity .25s ease; }
-.shelf-ready { opacity: 1 !important; }
+/* :is() carries the ID specificity, so .shelf-ready wins without !important. */
+:is(#filmDiary, #currentlyReading, #bookShelf).shelf-ready { opacity: 1; }
 
-/* Recent Reviews: one column on phones. In two columns, long title words
-   ("Antoinette") are wider than the text column and pushed the whole page
-   into sideways scroll. !important beats the inline grid-template-columns. */
-@media (max-width: 560px) {
-  #filmDiary { grid-template-columns: minmax(0, 1fr) !important; }
+/* Recent Reviews: two columns, one on phones. In two columns, long title
+   words ("Antoinette") are wider than the text column and pushed the whole
+   page into sideways scroll. Columns live here, not inline, so the media
+   query can override them. */
+#filmDiary { grid-template-columns: repeat(2, 1fr); }
+@media (width <= 560px) {
+  #filmDiary { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Covers are 122px at most but shrink so the whole shelf fits its width;
    at fixed size, ten covers ran off the page on anything between a phone and
-   a laptop (e.g. a phone in landscape). !important beats the inline flex/width. */
-#bookShelf .book-spine { flex: 0 1 122px !important; width: auto !important; min-width: 0; }
+   a laptop (e.g. a phone in landscape). Sizing and shelf padding live here,
+   not inline, so the narrow-screen rules below can override them. */
+#bookShelf { padding: 28px 10px 0 24px; }
+#bookShelf .book-spine { flex: 0 1 122px; min-width: 0; }
 
 /* Narrow screens: ten shrunken covers would be too small to read, so show
    five. > :nth-child counts the <a> wrappers books.js adds around linked
    covers, not just bare spines. */
-@media (max-width: 480px) {
-  #bookShelf { padding-left: 20px !important; padding-right: 0 !important; }
-  #bookShelf .book-spine { flex-basis: 74px !important; }
+@media (width <= 480px) {
+  #bookShelf { padding-inline: 20px 0; }
+  #bookShelf .book-spine { flex-basis: 74px; }
+  /* Still !important: linked covers carry an inline display:contents. */
   #bookShelf > :nth-child(n+6) { display: none !important; }
 }
